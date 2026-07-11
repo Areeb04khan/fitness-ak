@@ -161,3 +161,12 @@ export const NUTRITION_TARGETS = {
   carbs_g: 260,
   fat_g: 75,
 };
+
+// Shared type for the private checklist (safe to import from client — type only).
+export type PrivateItem = {
+  id: string;
+  name: string;
+  dose: string;
+  time: "morning" | "afternoon" | "evening" | "bedtime";
+  notes?: string;
+};
