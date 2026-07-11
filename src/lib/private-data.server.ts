@@ -1,13 +1,8 @@
 // SERVER ONLY. This file must never be imported from client code.
 // Edit here to update your private medications/supplements list.
 
-export type PrivateItem = {
-  id: string;
-  name: string;
-  dose: string;
-  time: "morning" | "afternoon" | "evening" | "bedtime";
-  notes?: string;
-};
+import type { PrivateItem } from "./plan-data";
+export type { PrivateItem };
 
 export const PRIVATE_ITEMS: PrivateItem[] = [
   { id: "vit-d", name: "Vitamin D3", dose: "2000 IU", time: "morning", notes: "With breakfast" },

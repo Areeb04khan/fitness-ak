@@ -5,7 +5,7 @@ import { getPrivateItems, lockSite } from "@/lib/gate.functions";
 import { Lock, LogOut, Pill } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { isoDate, todayLocal } from "@/lib/plan";
-import type { PrivateItem } from "@/lib/private-data.server";
+import type { PrivateItem } from "@/lib/plan-data";
 
 export function PrivateChecklist() {
   const router = useRouter();
