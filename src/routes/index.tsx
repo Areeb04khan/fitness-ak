@@ -5,7 +5,7 @@ import { PrivateChecklist } from "@/components/PrivateChecklist";
 import { ChatWidget } from "@/components/ChatWidget";
 import { getTrainingDay, getWeekNumber, todayLocal, formatLongDate, getMealsForDate } from "@/lib/plan";
 import { NUTRITION_TARGETS } from "@/lib/plan-data";
-import { Dumbbell, ChefHat } from "lucide-react";
+import { Dumbbell, ChefHat, CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
