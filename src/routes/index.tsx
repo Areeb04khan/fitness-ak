@@ -116,6 +116,9 @@ function Header() {
           <Link to="/kitchen" className="px-3 py-1.5 rounded-md hover:bg-secondary" activeProps={{ className: "px-3 py-1.5 rounded-md bg-secondary text-ember" }}>
             Mom's Kitchen
           </Link>
+          <a href="/workout.html" className="px-3 py-1.5 rounded-md hover:bg-secondary">
+            Workout
+          </a>
         </div>
       </nav>
     </header>
