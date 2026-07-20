@@ -5,7 +5,7 @@ import { PrivateChecklist } from "@/components/PrivateChecklist";
 import { ChatWidget } from "@/components/ChatWidget";
 import { getTrainingDay, getWeekNumber, todayLocal, formatLongDate, getMealsForDate } from "@/lib/plan";
 import { NUTRITION_TARGETS } from "@/lib/plan-data";
-import { Dumbbell, ChefHat } from "lucide-react";
+import { Dumbbell, ChefHat, CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,6 +63,20 @@ Nutrition targets: ${NUTRITION_TARGETS.calories} kcal, ${NUTRITION_TARGETS.prote
           </ul>
         </section>
 
+        <a
+          href="/workout.html"
+          className="block rounded-xl border border-border bg-card p-5 hover:border-ember transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <CalendarDays className="h-5 w-5 text-ember" />
+            <div className="flex-1">
+              <div className="font-display text-xl">4-Week Workout Guide</div>
+              <div className="text-xs text-muted-foreground">Full plan · Weeks 1–2 & 3–4 with form videos</div>
+            </div>
+            <span className="text-ember">→</span>
+          </div>
+        </a>
+
         <div className="grid gap-6 md:grid-cols-2">
           <WaterTracker />
           <PrivateChecklist />
@@ -102,6 +116,9 @@ function Header() {
           <Link to="/kitchen" className="px-3 py-1.5 rounded-md hover:bg-secondary" activeProps={{ className: "px-3 py-1.5 rounded-md bg-secondary text-ember" }}>
             Mom's Kitchen
           </Link>
+          <a href="/workout.html" className="px-3 py-1.5 rounded-md hover:bg-secondary">
+            Workout
+          </a>
         </div>
       </nav>
     </header>
