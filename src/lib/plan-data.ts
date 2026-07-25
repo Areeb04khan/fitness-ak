@@ -1,78 +1,6 @@
-// Public data — safe to ship to the browser.
-// Change PROGRAM_START_DATE to the Monday you actually start training.
+// Meal rotations, hydration, and weather config remain static — the chatbot
+// edits the training split, not the family recipe rotation.
 
-export const PROGRAM_START_DATE = "2026-07-13"; // must be a Monday (ISO)
-
-export type Exercise = { name: string; sets: string; notes?: string };
-export type DayPlan = { focus: string; exercises: Exercise[] };
-
-// Weekly training split — 7 slots, Monday first
-export const WEEKLY_SPLIT: DayPlan[] = [
-  {
-    focus: "Push — Chest, Shoulders, Triceps",
-    exercises: [
-      { name: "Barbell bench press", sets: "4 × 6–8" },
-      { name: "Overhead press", sets: "3 × 8" },
-      { name: "Incline dumbbell press", sets: "3 × 10" },
-      { name: "Lateral raises", sets: "3 × 12", notes: "Slow eccentric" },
-      { name: "Rope pushdowns", sets: "3 × 12" },
-    ],
-  },
-  {
-    focus: "Pull — Back & Biceps",
-    exercises: [
-      { name: "Deadlift", sets: "4 × 5" },
-      { name: "Pull-ups", sets: "4 × AMRAP" },
-      { name: "Barbell row", sets: "3 × 8" },
-      { name: "Face pulls", sets: "3 × 15" },
-      { name: "Hammer curls", sets: "3 × 10" },
-    ],
-  },
-  {
-    focus: "Legs — Quad emphasis",
-    exercises: [
-      { name: "Back squat", sets: "5 × 5" },
-      { name: "Bulgarian split squat", sets: "3 × 10 / leg" },
-      { name: "Leg press", sets: "3 × 12" },
-      { name: "Standing calf raise", sets: "4 × 12" },
-    ],
-  },
-  {
-    focus: "Active recovery — Zone 2 + mobility",
-    exercises: [
-      { name: "Zone 2 cardio", sets: "40 min", notes: "Nasal-only breathing" },
-      { name: "Full-body mobility flow", sets: "15 min" },
-    ],
-  },
-  {
-    focus: "Push — Hypertrophy",
-    exercises: [
-      { name: "Incline barbell press", sets: "4 × 8" },
-      { name: "Seated DB shoulder press", sets: "3 × 10" },
-      { name: "Cable fly", sets: "3 × 12" },
-      { name: "Skullcrushers", sets: "3 × 10" },
-    ],
-  },
-  {
-    focus: "Pull + Posterior chain",
-    exercises: [
-      { name: "Romanian deadlift", sets: "4 × 8" },
-      { name: "Chest-supported row", sets: "4 × 10" },
-      { name: "Lat pulldown", sets: "3 × 12" },
-      { name: "Rear delt fly", sets: "3 × 15" },
-      { name: "Preacher curl", sets: "3 × 10" },
-    ],
-  },
-  {
-    focus: "Rest — walk, stretch, sleep",
-    exercises: [
-      { name: "Easy walk", sets: "30–45 min" },
-      { name: "Foam roll + stretch", sets: "15 min" },
-    ],
-  },
-];
-
-// Rotating dinner menu — one per weekday
 export type Meal = {
   name: string;
   ingredients: string[];
@@ -113,7 +41,7 @@ export const DINNER_ROTATION: Meal[] = [
   },
   {
     name: "Chole Bhature",
-    ingredients: ["1 cup chickpeas", "1 onion", "2 tomatoes", "Chole masala", "Maida (or atta) for bhature"],
+    ingredients: ["1 cup chickpeas", "1 onion", "2 tomatoes", "Chole masala", "Maida for bhature"],
     prepTonight: ["Soak chickpeas overnight", "Make bhature dough with yogurt + baking soda, rest overnight"],
     recipe: "Pressure cook chickpeas with tea bag for color. Sauté onion + tomato + chole masala, add chickpeas, simmer 20 min. Roll bhature and deep fry.",
   },
@@ -148,7 +76,6 @@ export const LUNCH_ROTATION = [
 export const HYDRATION_TARGET_ML = 3000;
 export const HOT_DAY_TEMP_C = 30;
 
-// Location for weather (Delhi by default — change as needed)
 export const WEATHER_LOCATION = {
   name: "Delhi",
   latitude: 28.6139,
@@ -162,11 +89,38 @@ export const NUTRITION_TARGETS = {
   fat_g: 75,
 };
 
-// Shared type for the private checklist (safe to import from client — type only).
-export type PrivateItem = {
-  id: string;
-  name: string;
-  dose: string;
-  time: "morning" | "afternoon" | "evening" | "bedtime";
-  notes?: string;
-};
+export const PROGRAM_START_DATE = "2026-07-13";
+
+export const DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+export function todayLocal(): Date {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+export function dayIndexOf(date: Date): number {
+  return (date.getDay() + 6) % 7;
+}
+
+export function getWeekNumber(date: Date): number {
+  const start = new Date(PROGRAM_START_DATE + "T00:00:00");
+  const diff = Math.floor((date.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+  return Math.max(1, Math.floor(diff / 7) + 1);
+}
+
+export function formatLongDate(date: Date): string {
+  return date.toLocaleDateString(undefined, {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export function getMealsForDate(date: Date) {
+  const day = dayIndexOf(date);
+  return {
+    breakfast: BREAKFAST_ROTATION[day],
+    lunch: LUNCH_ROTATION[day],
+    dinner: DINNER_ROTATION[day],
+  };
+}
