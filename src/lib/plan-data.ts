@@ -98,6 +98,16 @@ export function todayLocal(): Date {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate());
 }
 
+export function isoDate(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
+export function addDays(d: Date, n: number): Date {
+  const c = new Date(d);
+  c.setDate(c.getDate() + n);
+  return c;
+}
+
 export function dayIndexOf(date: Date): number {
   return (date.getDay() + 6) % 7;
 }
