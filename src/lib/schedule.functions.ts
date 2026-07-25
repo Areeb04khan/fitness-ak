@@ -123,7 +123,7 @@ export const updateExercise = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    const patch: Record<string, unknown> = {};
+    const patch: { name?: string; sets?: string; notes?: string } = {};
     if (data.name !== undefined) patch.name = data.name;
     if (data.sets !== undefined) patch.sets = data.sets;
     if (data.notes !== undefined) patch.notes = data.notes;
