@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { addDays, formatLongDate, getMealsForDate, todayLocal } from "@/lib/plan";
-import { ChefHat, MessageCircle, Moon, Sun, Utensils } from "lucide-react";
+import { addDays, formatLongDate, getMealsForDate, todayLocal } from "@/lib/plan-data";
+import { MessageCircle, Moon, Sun, Utensils } from "lucide-react";
 
 export const Route = createFileRoute("/kitchen")({
   head: () => ({
@@ -53,7 +53,7 @@ function Kitchen() {
           <div className="mb-5">
             <h3 className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Ingredients</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
-              {meals.dinner.ingredients.map(i => (
+              {meals.dinner.ingredients.map((i: string) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-ember mt-1">•</span>{i}
                 </li>
@@ -64,7 +64,7 @@ function Kitchen() {
           <div className="mb-5">
             <h3 className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Prep tonight</h3>
             <ul className="space-y-1.5 text-sm">
-              {meals.dinner.prepTonight.map(p => (
+              {meals.dinner.prepTonight.map((p: string) => (
                 <li key={p} className="flex items-start gap-2">
                   <span className="text-ember mt-1">→</span>{p}
                 </li>
@@ -99,10 +99,10 @@ function buildShareText(dateLabel: string, meals: ReturnType<typeof getMealsForD
 🌙 Dinner: ${meals.dinner.name}
 
 Ingredients for dinner:
-${meals.dinner.ingredients.map(i => `• ${i}`).join("\n")}
+${meals.dinner.ingredients.map((i: string) => `• ${i}`).join("\n")}
 
 Prep tonight:
-${meals.dinner.prepTonight.map(p => `→ ${p}`).join("\n")}`;
+${meals.dinner.prepTonight.map((p: string) => `→ ${p}`).join("\n")}`;
 }
 
 function Header() {

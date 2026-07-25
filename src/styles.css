@@ -37,28 +37,28 @@
 
 :root {
   --radius: 0.75rem;
-  /* Charcoal & Ember — dark by default */
-  --background: oklch(0.16 0.008 60);
-  --foreground: oklch(0.94 0.012 80);
-  --card: oklch(0.20 0.010 60);
-  --card-foreground: oklch(0.94 0.012 80);
-  --popover: oklch(0.20 0.010 60);
-  --popover-foreground: oklch(0.94 0.012 80);
-  --primary: oklch(0.68 0.20 40);
-  --primary-foreground: oklch(0.14 0.01 60);
-  --secondary: oklch(0.26 0.012 60);
-  --secondary-foreground: oklch(0.94 0.012 80);
-  --muted: oklch(0.24 0.010 60);
-  --muted-foreground: oklch(0.68 0.02 70);
-  --accent: oklch(0.30 0.05 40);
-  --accent-foreground: oklch(0.96 0.012 80);
-  --destructive: oklch(0.60 0.22 25);
-  --destructive-foreground: oklch(0.98 0.003 60);
-  --border: oklch(0.28 0.012 60);
-  --input: oklch(0.24 0.012 60);
-  --ring: oklch(0.68 0.20 40);
-  --ember: oklch(0.68 0.20 40);
-  --ember-glow: oklch(0.75 0.18 55);
+  /* Bright, high-contrast light theme with an ember accent */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.01 60);
+  --card: oklch(0.99 0.003 80);
+  --card-foreground: oklch(0.18 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 60);
+  --primary: oklch(0.60 0.20 40);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.005 80);
+  --secondary-foreground: oklch(0.20 0.01 60);
+  --muted: oklch(0.97 0.004 80);
+  --muted-foreground: oklch(0.45 0.015 70);
+  --accent: oklch(0.94 0.02 45);
+  --accent-foreground: oklch(0.20 0.01 60);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.90 0.006 70);
+  --input: oklch(0.94 0.005 70);
+  --ring: oklch(0.60 0.20 40);
+  --ember: oklch(0.60 0.20 40);
+  --ember-glow: oklch(0.68 0.18 45);
 }
 
 @layer base {
@@ -69,9 +69,18 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, .font-display {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
   }
 }
+
+/* Chat markdown */
+.prose-chat p { margin: 0.25rem 0; }
+.prose-chat ul { list-style: disc; padding-left: 1.25rem; margin: 0.25rem 0; }
+.prose-chat ol { list-style: decimal; padding-left: 1.25rem; margin: 0.25rem 0; }
+.prose-chat code { background: var(--color-muted); padding: 0 0.25rem; border-radius: 4px; font-size: 0.85em; }
+.prose-chat pre { background: var(--color-muted); padding: 0.5rem 0.75rem; border-radius: 6px; overflow-x: auto; font-size: 0.85em; }
+.prose-chat strong { font-weight: 600; }

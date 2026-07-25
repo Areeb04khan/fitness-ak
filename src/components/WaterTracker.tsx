@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { HYDRATION_TARGET_ML } from "@/lib/plan-data";
+import { HYDRATION_TARGET_ML, isoDate, todayLocal } from "@/lib/plan-data";
 import { Droplet, Plus, Minus, RotateCcw } from "lucide-react";
-import { isoDate, todayLocal } from "@/lib/plan";
 
 const CUP_ML = 250;
 
