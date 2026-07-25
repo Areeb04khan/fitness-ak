@@ -10,32 +10,51 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as KitchenRouteImport } from './routes/kitchen'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 
 const KitchenRoute = KitchenRouteImport.update({
   id: '/kitchen',
   path: '/kitchen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof AuthenticatedRouteRoute
+  '/auth': typeof AuthRoute
   '/kitchen': typeof KitchenRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof AuthenticatedRouteRoute
+  '/auth': typeof AuthRoute
   '/kitchen': typeof KitchenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteRoute
+  '/auth': typeof AuthRoute
   '/kitchen': typeof KitchenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/kitchen'
+  fullPaths: '/' | '/auth' | '/kitchen'
   fileRoutesByTo: FileRoutesByTo
-  to: '/kitchen'
-  id: '__root__' | '/kitchen'
+  to: '/' | '/auth' | '/kitchen'
+  id: '__root__' | '/_authenticated' | '/auth' | '/kitchen'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRoute
+  AuthRoute: typeof AuthRoute
   KitchenRoute: typeof KitchenRoute
 }
 
@@ -48,10 +67,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KitchenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthenticatedRouteRoute: AuthenticatedRouteRoute,
+  AuthRoute: AuthRoute,
   KitchenRoute: KitchenRoute,
 }
 export const routeTree = rootRouteImport
