@@ -171,9 +171,11 @@ export const Route = createFileRoute("/api/chat")({
               sets: z.string().optional(),
               notes: z.string().optional(),
             }),
-            execute: async ({ exercise_id, ...patch }) => {
-              const clean: Record<string, string> = {};
-              for (const [k, v] of Object.entries(patch)) if (v !== undefined) clean[k] = v as string;
+            execute: async ({ exercise_id, name, sets, notes }) => {
+              const clean: { name?: string; sets?: string; notes?: string } = {};
+              if (name !== undefined) clean.name = name;
+              if (sets !== undefined) clean.sets = sets;
+              if (notes !== undefined) clean.notes = notes;
               if (Object.keys(clean).length === 0) return { ok: true };
               const { error } = await supabase
                 .from("exercises")
