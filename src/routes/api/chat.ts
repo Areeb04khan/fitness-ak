@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createClient } from "@supabase/supabase-js";
 import { generateText, tool, stepCountIs } from "ai";
 import { z } from "zod";
-import { createLovableAiGatewayProvider } from "@/lib/ai-gateway.server";
+import { createGeminiModel } from "@/lib/ai-gateway.server";
 import type { Database } from "@/integrations/supabase/types";
 
 type Role = "user" | "assistant" | "system";
@@ -40,9 +40,6 @@ export const Route = createFileRoute("/api/chat")({
         if (!body.thread_id || !body.message) {
           return new Response("Missing thread_id or message", { status: 400 });
         }
-
-        const apiKey = process.env.LOVABLE_API_KEY;
-        if (!apiKey) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
 
         const supabase = makeUserClient(token);
         const { data: userData, error: userErr } = await supabase.auth.getUser(token);
@@ -84,8 +81,7 @@ export const Route = createFileRoute("/api/chat")({
           parts: [{ type: "text", text: body.message }],
         });
 
-        const gateway = createLovableAiGatewayProvider(apiKey);
-        const model = gateway("google/gemini-2.5-flash");
+        const model = createGeminiModel();
 
         const tools = {
           list_schedule: tool({

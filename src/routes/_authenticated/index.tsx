@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { AppNav } from "@/components/AppNav";
 import { Weather } from "@/components/Weather";
 import { WaterTracker } from "@/components/WaterTracker";
 import { getSchedule } from "@/lib/schedule.functions";
+import { seedWorkoutPlan } from "@/lib/seed.functions";
 import { listMeds } from "@/lib/meds.functions";
 import {
   DAY_NAMES,
@@ -37,6 +38,18 @@ function MyDay() {
 
   const scheduleQ = useQuery({ queryKey: ["schedule"], queryFn: () => getSchedule() });
   const medsQ = useQuery({ queryKey: ["meds"], queryFn: () => listMeds() });
+
+  // Auto-seed Block A workout plan for new users
+  const seedM = useMutation({ mutationFn: () => seedWorkoutPlan() });
+  useEffect(() => {
+    if (scheduleQ.data && scheduleQ.data.length === 0 && !seedM.isPending && !seedM.isSuccess && !seedM.isError) {
+      seedM.mutate(undefined, {
+        onSuccess: (result) => {
+          if (result?.seeded) scheduleQ.refetch();
+        },
+      });
+    }
+  }, [scheduleQ.data]);
 
   const day = scheduleQ.data?.find((d) => d.day_index === idx);
 
