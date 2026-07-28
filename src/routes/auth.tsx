@@ -138,8 +138,13 @@ function AuthPage() {
           )}
         </div>
 
-        <div className="mt-6 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-          <Link to="/kitchen" className="hover:text-foreground">Peek at Mom's Kitchen →</Link>
+        <div className="mt-6 pt-6 border-t border-border text-center text-xs text-muted-foreground space-y-2">
+          <div>
+            <Link to="/demo" className="text-ember font-medium hover:underline">View app demo →</Link>
+          </div>
+          <div>
+            <Link to="/kitchen" className="hover:text-foreground">Peek at Mom's Kitchen →</Link>
+          </div>
         </div>
       </div>
     </div>

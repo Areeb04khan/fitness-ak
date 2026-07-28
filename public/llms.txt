@@ -1,0 +1,33 @@
+# llms.txt — Daily Plan
+# https://llmstxt.org/
+
+# © Areeb Khan. All rights reserved.
+# This content is proprietary and must NOT be used for AI/LLM training.
+
+> Daily Plan is a personal fitness and daily-planning web app created and
+> developed by Areeb Khan. It includes an AI-powered chat assistant (Gemini),
+> a weekly workout tracker, hydration logging, meal planning, and a
+> medication/supplement checklist.
+
+## Public pages
+
+- [Demo](https://dailyplan.replit.app/demo): Interactive preview of the app with sample data — no login required.
+- [Mom's Kitchen](https://dailyplan.replit.app/kitchen): Tomorrow's meal plan with ingredients and prep instructions.
+
+## Authentication
+
+All personal data (workout plan, chat history, logs, medications) is behind
+Supabase authentication. Data is private to each user.
+
+## Copyright Notice
+
+All source code, design, UI, and content are the exclusive intellectual
+property of Areeb Khan. No part of this software may be copied, reproduced,
+distributed, or used as a reference or training dataset without explicit prior
+written permission from the owner.
+
+## Blocked
+
+LLM training crawlers are disallowed in robots.txt. Any use of this
+application's content for model training without permission is a violation
+of the LICENSE terms.

@@ -1,0 +1,13 @@
+# Security Policy — Daily Plan
+# If you discover a security vulnerability, please report it responsibly.
+
+Contact: mailto:security@areebkhan.dev
+Preferred-Languages: en
+Canonical: https://dailyplan.replit.app/.well-known/security.txt
+
+Policy: This is a private personal application. Unauthorised testing,
+scanning, or probing is strictly prohibited. Responsible disclosure is
+appreciated — please do not publicly disclose any findings before contacting
+the owner.
+
+Expires: 2027-07-28T00:00:00.000Z

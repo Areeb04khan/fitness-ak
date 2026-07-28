@@ -1,0 +1,23 @@
+/* TEAM */
+Creator & Developer: Areeb Khan
+Contact: [private]
+Location: India
+
+/* THANKS */
+TanStack (TanStack Start, Router, Query)
+Supabase (database & auth)
+shadcn/ui (component library)
+Google Gemini (AI assistant)
+Tailwind CSS (styling)
+Lucide (icons)
+
+/* SITE */
+Last update: 2026-07-28
+Language: English
+Doctype: HTML5
+IDE: Replit
+
+/* INTELLECTUAL PROPERTY */
+All content, design, and source code are the exclusive property of Areeb Khan.
+Unauthorised copying, reproduction, or distribution is strictly prohibited.
+See /LICENSE for full terms.

@@ -1,0 +1,41 @@
+# robots.txt — Daily Plan
+# © Areeb Khan. All rights reserved.
+# Unauthorised scraping, crawling, or reproduction is strictly prohibited.
+
+User-agent: *
+Disallow: /api/
+Disallow: /chat/
+Disallow: /workout
+Disallow: /
+
+# Allow only the public demo and kitchen pages to be indexed
+Allow: /demo
+Allow: /kitchen
+Allow: /auth
+
+# Block all AI training crawlers — content is proprietary
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://dailyplan.replit.app/sitemap.xml
