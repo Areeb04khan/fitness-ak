@@ -1,9 +1,13 @@
-import { google } from "@ai-sdk/google";
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 
 /**
- * Returns a Gemini model via the @ai-sdk/google provider.
- * Reads GOOGLE_GENERATIVE_AI_API_KEY from the environment automatically.
+ * Gemini via the Lovable AI Gateway (no user API key needed).
  */
-export function createGeminiModel(modelId = "gemini-2.5-flash") {
-  return google(modelId);
+export function createGeminiModel(modelId = "google/gemini-2.5-flash") {
+  const gateway = createOpenAICompatible({
+    name: "lovable-ai-gateway",
+    baseURL: "https://ai.gateway.lovable.dev/v1",
+    apiKey: process.env["LOVABLE_API_KEY"]!,
+  });
+  return gateway(modelId);
 }
