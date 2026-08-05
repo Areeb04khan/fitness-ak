@@ -26,7 +26,7 @@ function AuthPage() {
   // redirect if already signed in
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) navigate({ to: "/", replace: true });
+      if (data.user) navigate({ to: "/today", replace: true });
     });
   }, [navigate]);
 
@@ -47,12 +47,12 @@ function AuthPage() {
           setInfo("Check your email to confirm the account, then sign in.");
           setMode("signin");
         } else {
-          navigate({ to: "/", replace: true });
+          navigate({ to: "/today", replace: true });
         }
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        navigate({ to: "/", replace: true });
+        navigate({ to: "/today", replace: true });
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
