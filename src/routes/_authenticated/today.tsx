@@ -18,7 +18,7 @@ import {
 import { CalendarDays, ChefHat, Dumbbell, Loader2, Pill, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export const Route = createFileRoute("/_authenticated/")({
+export const Route = createFileRoute("/_authenticated/today")({
   head: () => ({
     meta: [
       { title: "My Day — Daily Plan" },
