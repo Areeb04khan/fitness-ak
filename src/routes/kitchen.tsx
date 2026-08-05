@@ -110,10 +110,10 @@ function Header() {
     <header className="border-b border-border">
       <nav className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
         <Link to="/" className="font-display text-xl tracking-wider">
-          DAILY <span className="text-ember">·</span> PLAN
+          THE WORKOUT <span className="text-ember">ZONE</span>
         </Link>
         <div className="flex items-center gap-1 text-sm">
-          <Link to="/" className="px-3 py-1.5 rounded-md hover:bg-secondary" activeProps={{ className: "px-3 py-1.5 rounded-md bg-secondary text-ember" }} activeOptions={{ exact: true }}>
+          <Link to="/today" className="px-3 py-1.5 rounded-md hover:bg-secondary" activeProps={{ className: "px-3 py-1.5 rounded-md bg-secondary text-ember" }}>
             My Day
           </Link>
           <Link to="/kitchen" className="px-3 py-1.5 rounded-md hover:bg-secondary" activeProps={{ className: "px-3 py-1.5 rounded-md bg-secondary text-ember" }}>

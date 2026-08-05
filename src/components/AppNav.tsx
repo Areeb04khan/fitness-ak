@@ -20,10 +20,10 @@ export function AppNav() {
     <header className="border-b border-border bg-card/60 backdrop-blur">
       <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
         <Link to="/" className="font-display text-xl tracking-wider">
-          DAILY <span className="text-ember">·</span> PLAN
+          THE WORKOUT <span className="text-ember">ZONE</span>
         </Link>
         <div className="flex items-center gap-1 text-sm">
-          <NavLink to="/" icon={<Home className="h-4 w-4" />} label="Today" exact />
+          <NavLink to="/today" icon={<Home className="h-4 w-4" />} label="Today" />
           <NavLink to="/workout" icon={<Dumbbell className="h-4 w-4" />} label="Workout" />
           <NavLink to="/chat" icon={<MessageSquare className="h-4 w-4" />} label="Chat" />
           <NavLink to="/kitchen" icon={<ChefHat className="h-4 w-4" />} label="Kitchen" />
@@ -46,7 +46,7 @@ function NavLink({
   label,
   exact,
 }: {
-  to: "/" | "/workout" | "/chat" | "/kitchen";
+  to: "/today" | "/workout" | "/chat" | "/kitchen";
   icon: React.ReactNode;
   label: string;
   exact?: boolean;
