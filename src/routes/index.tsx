@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Clock, Dumbbell, MapPin, Star, ArrowRight, Navigation } from "lucide-react";
+import { Clock, Dumbbell, MapPin, Star, ArrowRight, Navigation, Phone, LogIn } from "lucide-react";
 import { GYM, GYM_HOURS, FACILITIES, REVIEWS, PLANS } from "@/lib/gym-data";
-import heroImg from "@/assets/gym-hero.jpg";
-import strengthImg from "@/assets/gym-strength.jpg";
-import cardioImg from "@/assets/gym-cardio.jpg";
-import trainerImg from "@/assets/gym-trainer.jpg";
+import photo0 from "@/assets/gym-photo-0.jpg.asset.json";
+import photo1 from "@/assets/gym-photo-1.jpg.asset.json";
+import photo3 from "@/assets/gym-photo-3.jpg.asset.json";
+import photo4 from "@/assets/gym-photo-4.jpg.asset.json";
+import photo5 from "@/assets/gym-photo-5.jpg.asset.json";
+import photo6 from "@/assets/gym-photo-6.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -13,12 +15,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "The Workout Zone in Khaleel Nagar, Awas Vikas, Fatehpur — full free-weights and cardio floor, supportive trainers, affordable membership. Open Mon–Sat.",
+          "The Workout Zone in Khaleel Nagar, Awas Vikas, Fatehpur — full free-weights and cardio floor, supportive trainers, affordable membership. Open Mon–Sat, 5 AM to 10 PM.",
       },
       { property: "og:title", content: "The Workout Zone — Gym in Fatehpur" },
       {
         property: "og:description",
-        content: "Strength, cardio and coaching in Khaleel Nagar, Fatehpur. Rated 4.9 by members.",
+        content: "Strength, cardio and coaching in Khaleel Nagar, Fatehpur. Rated 4.9 by members. Call Sharib 89609 35036.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,6 +34,7 @@ function GymHome() {
     "@context": "https://schema.org",
     "@type": "ExerciseGym",
     name: GYM.legalName,
+    telephone: "+91 89609 35036",
     address: {
       "@type": "PostalAddress",
       streetAddress: GYM.addressLine,
@@ -50,25 +53,34 @@ function GymHome() {
 
       {/* Nav */}
       <header className="border-b border-border bg-card/70 backdrop-blur sticky top-0 z-20">
-        <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
-          <a href="#top" className="font-display text-xl tracking-wider flex items-center gap-2">
-            <Dumbbell className="h-5 w-5 text-ember" />
-            THE WORKOUT <span className="text-ember">ZONE</span>
+        <nav className="mx-auto max-w-6xl px-4 py-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+          <a href="#top" className="font-display text-lg sm:text-xl tracking-wider flex min-w-0 items-center gap-2">
+            <Dumbbell className="h-5 w-5 shrink-0 text-ember" />
+            <span className="truncate">
+              THE WORKOUT <span className="text-ember">ZONE</span>
+            </span>
           </a>
-          <div className="hidden md:flex items-center gap-1 text-sm text-muted-foreground">
-            <a href="#facilities" className="px-3 py-1.5 rounded-md hover:bg-secondary">Facilities</a>
-            <a href="#timings" className="px-3 py-1.5 rounded-md hover:bg-secondary">Timings</a>
-            <a href="#reviews" className="px-3 py-1.5 rounded-md hover:bg-secondary">Reviews</a>
-            <a href="#visit" className="px-3 py-1.5 rounded-md hover:bg-secondary">Visit</a>
+          <div className="flex items-center gap-1 text-sm">
+            <div className="hidden md:flex items-center gap-1 text-muted-foreground">
+              <a href="#facilities" className="px-3 py-1.5 rounded-md hover:bg-secondary">Facilities</a>
+              <a href="#timings" className="px-3 py-1.5 rounded-md hover:bg-secondary">Timings</a>
+              <a href="#reviews" className="px-3 py-1.5 rounded-md hover:bg-secondary">Reviews</a>
+              <a href="#visit" className="px-3 py-1.5 rounded-md hover:bg-secondary">Visit</a>
+            </div>
+            <a
+              href={GYM.phoneHref}
+              className="hidden sm:inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              <Phone className="h-4 w-4" /> Call {GYM.contactName}
+            </a>
+            <Link
+              to="/today"
+              className="inline-flex items-center gap-1.5 rounded-md border border-input bg-card px-3 py-2 text-xs sm:text-sm font-medium hover:bg-accent"
+            >
+              <LogIn className="h-4 w-4 shrink-0" />
+              <span className="whitespace-nowrap">Member login</span>
+            </Link>
           </div>
-          <a
-            href={GYM.directionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
-            Get directions
-          </a>
         </nav>
       </header>
 
@@ -76,10 +88,8 @@ function GymHome() {
         {/* Hero */}
         <section className="relative">
           <img
-            src={heroImg}
-            alt="Bright training floor at The Workout Zone gym in Fatehpur with dumbbell racks and treadmills"
-            width={1920}
-            height={1088}
+            src={photo0.url}
+            alt="The Workout Zone gym floor in Fatehpur with members training on weights and machines"
             className="h-[62vh] min-h-[380px] w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/30" />
@@ -89,7 +99,7 @@ function GymHome() {
                 <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-ember mb-3">
                   <MapPin className="h-3.5 w-3.5" /> {GYM.addressLine}, {GYM.city}
                 </div>
-                <h1 className="font-display text-5xl md:text-7xl leading-[0.95]">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-7xl leading-[0.95]">
                   Train hard.
                   <br />
                   Right here in {GYM.city}.
@@ -100,18 +110,18 @@ function GymHome() {
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <a
+                    href={GYM.phoneHref}
+                    className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                  >
+                    <Phone className="h-4 w-4" /> Call {GYM.contactName} · {GYM.phone}
+                  </a>
+                  <a
                     href={GYM.directionsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-                  >
-                    <Navigation className="h-4 w-4" /> Visit the gym
-                  </a>
-                  <a
-                    href="#facilities"
                     className="inline-flex items-center gap-2 rounded-md border border-input bg-card px-5 py-2.5 text-sm font-medium hover:bg-accent"
                   >
-                    See the floor <ArrowRight className="h-4 w-4" />
+                    <Navigation className="h-4 w-4" /> Visit the gym
                   </a>
                 </div>
                 <div className="mt-6 flex items-center gap-2 text-sm">
@@ -124,6 +134,36 @@ function GymHome() {
                   <span className="text-muted-foreground">· {GYM.reviewCount} Google reviews</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing CTA */}
+        <section className="border-b border-border bg-primary text-primary-foreground">
+          <div className="mx-auto max-w-6xl px-4 py-8 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+            <div className="min-w-0">
+              <h2 className="font-display text-2xl sm:text-3xl">
+                For membership price, call {GYM.contactName} or visit the gym
+              </h2>
+              <p className="mt-1 text-sm opacity-90">
+                {GYM.contactName} — {GYM.phone} · {GYM.addressLine}, {GYM.city}. Open Mon–Sat, 5 AM – 10 PM.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={GYM.phoneHref}
+                className="inline-flex items-center gap-2 rounded-md bg-card px-5 py-2.5 text-sm font-medium text-foreground hover:bg-card/90"
+              >
+                <Phone className="h-4 w-4" /> Call now
+              </a>
+              <a
+                href={GYM.directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-primary-foreground/40 px-5 py-2.5 text-sm font-medium hover:bg-primary-foreground/10"
+              >
+                <Navigation className="h-4 w-4" /> Visit gym
+              </a>
             </div>
           </div>
         </section>
@@ -146,17 +186,15 @@ function GymHome() {
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {[
-              { src: strengthImg, alt: "Loaded barbell in a squat rack at The Workout Zone" },
-              { src: cardioImg, alt: "Treadmills and cycles on the cardio floor" },
-              { src: trainerImg, alt: "Trainer coaching a member at The Workout Zone" },
+              { src: photo5.url, alt: "Members training across the main hall at The Workout Zone" },
+              { src: photo4.url, alt: "Pin-loaded machines and cable stations at The Workout Zone" },
+              { src: photo1.url, alt: "Free weights, benches and mirrors on the gym floor" },
             ].map((img) => (
               <img
                 key={img.alt}
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
-                width={1200}
-                height={900}
                 className="h-56 w-full rounded-xl border border-border object-cover"
               />
             ))}
@@ -204,10 +242,19 @@ function GymHome() {
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Members consistently call the fee the best value in Fatehpur. Walk in for current rates and a free look
-                around the floor.
-              </p>
+              <div className="mt-4 rounded-xl border border-ember bg-card p-5">
+                <div className="font-display text-2xl">For membership price</div>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Call {GYM.contactName} on {GYM.phone} or simply walk into the gym for current rates and a free look
+                  around the floor.
+                </p>
+                <a
+                  href={GYM.phoneHref}
+                  className="mt-4 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                >
+                  <Phone className="h-4 w-4" /> {GYM.phone}
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -228,6 +275,12 @@ function GymHome() {
               </blockquote>
             ))}
           </div>
+          <img
+            src={photo6.url}
+            alt="Trainers and members at The Workout Zone gym in Fatehpur"
+            loading="lazy"
+            className="mt-8 h-72 w-full rounded-xl border border-border object-cover"
+          />
         </section>
 
         {/* Visit */}
@@ -237,12 +290,24 @@ function GymHome() {
               <h2 className="font-display text-4xl md:text-5xl">Find us</h2>
               <p className="mt-3 text-lg">{GYM.fullAddress}</p>
               <p className="mt-1 text-sm text-muted-foreground">{GYM.landmark}</p>
+              <p className="mt-3 text-base">
+                Contact: <span className="font-medium">{GYM.contactName}</span> ·{" "}
+                <a href={GYM.phoneHref} className="text-ember hover:underline">
+                  {GYM.phone}
+                </a>
+              </p>
               <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={GYM.phoneHref}
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                >
+                  <Phone className="h-4 w-4" /> Call {GYM.contactName}
+                </a>
                 <a
                   href={GYM.directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                  className="inline-flex items-center gap-2 rounded-md border border-input bg-card px-5 py-2.5 text-sm font-medium hover:bg-accent"
                 >
                   <Navigation className="h-4 w-4" /> Directions
                 </a>
@@ -256,25 +321,30 @@ function GymHome() {
                 </a>
               </div>
               <div className="mt-8 rounded-xl border border-border bg-card p-5">
-                <div className="font-display text-2xl">Members' training area</div>
+                <div className="font-display text-2xl">Gym member login</div>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Track your split, log every set and ask the AI coach questions — sign in to your personal plan.
+                  Members can track their split, log every set and ask the AI coach questions.
                 </p>
-                <Link
-                  to="/today"
-                  className="mt-4 inline-flex items-center gap-2 text-sm text-ember hover:underline"
-                >
-                  Open my plan <ArrowRight className="h-4 w-4" />
+                <Link to="/today" className="mt-4 inline-flex items-center gap-2 text-sm text-ember hover:underline">
+                  Member login <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
-            <iframe
-              title={`Map showing ${GYM.legalName} in ${GYM.city}`}
-              src={GYM.mapsEmbedUrl}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-[420px] w-full rounded-xl border border-border"
-            />
+            <div className="space-y-4">
+              <iframe
+                title={`Map showing ${GYM.legalName} in ${GYM.city}`}
+                src={GYM.mapsEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[360px] w-full rounded-xl border border-border"
+              />
+              <img
+                src={photo3.url}
+                alt="Members posing on the training floor at The Workout Zone"
+                loading="lazy"
+                className="h-64 w-full rounded-xl border border-border object-cover"
+              />
+            </div>
           </div>
         </section>
       </main>
