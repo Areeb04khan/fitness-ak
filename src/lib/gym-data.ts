@@ -3,6 +3,10 @@
 export const GYM = {
   name: "The Workout Zone",
   legalName: "The Workout Zone Gym",
+  contactName: "Sharib",
+  phone: "89609 35036",
+  phoneHref: "tel:+918960935036",
+  whatsappUrl: "https://wa.me/918960935036",
   tagline: "Fatehpur's friendliest strength & cardio floor",
   addressLine: "Khaleel Nagar, Awas Vikas",
   city: "Fatehpur",
