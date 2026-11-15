@@ -7,6 +7,16 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 export const Route = createFileRoute("/_authenticated/chat/$threadId")({
+  head: () => ({
+    meta: [
+      { title: "Workout Assistant Conversation — The Workout Zone" },
+      { name: "description", content: "Your personal workout assistant conversation and training progress." },
+      { property: "og:title", content: "Workout Assistant Conversation — The Workout Zone" },
+      { property: "og:description", content: "Your personal workout assistant conversation and training progress." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: ChatThread,
 });
 

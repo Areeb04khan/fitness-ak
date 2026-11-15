@@ -9,6 +9,10 @@ export const Route = createFileRoute("/_authenticated/chat")({
     meta: [
       { title: "Assistant — Daily Plan" },
       { name: "description", content: "Chat with your training assistant. Update your schedule and log progress in plain English." },
+      { property: "og:title", content: "Workout Assistant — The Workout Zone" },
+      { property: "og:description", content: "Chat with your training assistant to update your schedule and track progress." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: ChatLayout,

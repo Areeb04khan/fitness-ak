@@ -6,6 +6,10 @@ export const Route = createFileRoute("/demo")({
     meta: [
       { title: "Demo — Daily Plan" },
       { name: "description", content: "Preview of the Daily Plan app — training, meals, hydration, and AI assistant." },
+      { property: "og:title", content: "Workout Plan Demo — The Workout Zone" },
+      { property: "og:description", content: "Preview of training, meals, hydration, and workout tracking." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: DemoPage,

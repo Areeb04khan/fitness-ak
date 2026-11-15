@@ -6,8 +6,12 @@ import { Loader2 } from "lucide-react";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Daily Plan" },
-      { name: "description", content: "Sign in to your personal daily plan." },
+      { title: "Gym Member Login — The Workout Zone" },
+      { name: "description", content: "Sign in to your personal training log at The Workout Zone." },
+      { property: "og:title", content: "Gym Member Login — The Workout Zone" },
+      { property: "og:description", content: "Sign in to your personal training log at The Workout Zone." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
     ],
   }),

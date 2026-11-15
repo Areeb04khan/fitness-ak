@@ -25,6 +25,8 @@ export const Route = createFileRoute("/_authenticated/today")({
       { name: "description", content: "Today's training focus, hydration target, meals, and medication checklist." },
       { property: "og:title", content: "My Day" },
       { property: "og:description", content: "Today's training focus and daily checklist." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: MyDay,
