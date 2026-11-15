@@ -5,6 +5,16 @@ import { Loader2 } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 export const Route = createFileRoute("/_authenticated/chat/")({
+  head: () => ({
+    meta: [
+      { title: "Workout Assistant — The Workout Zone" },
+      { name: "description", content: "Chat with your training assistant to update your schedule and track progress." },
+      { property: "og:title", content: "Workout Assistant — The Workout Zone" },
+      { property: "og:description", content: "Chat with your training assistant to update your schedule and track progress." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
   component: ChatIndex,
 });
 

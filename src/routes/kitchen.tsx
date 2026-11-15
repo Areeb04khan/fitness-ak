@@ -9,6 +9,8 @@ export const Route = createFileRoute("/kitchen")({
       { name: "description", content: "Tomorrow's breakfast, lunch, and dinner with ingredients and what to prep tonight." },
       { property: "og:title", content: "Mom's Kitchen — Tomorrow's Menu" },
       { property: "og:description", content: "Tomorrow's breakfast, lunch, and dinner with ingredients and what to prep tonight." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: Kitchen,

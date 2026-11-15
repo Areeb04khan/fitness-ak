@@ -12,6 +12,10 @@ export const Route = createFileRoute("/_authenticated/workout")({
     meta: [
       { title: "Workout — Daily Plan" },
       { name: "description", content: "Weekly training split with set-by-set logging and progress history." },
+      { property: "og:title", content: "Workout Tracker — The Workout Zone" },
+      { property: "og:description", content: "Weekly training split with set-by-set logging and progress history." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: WorkoutPage,
