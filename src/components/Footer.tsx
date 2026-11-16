@@ -5,7 +5,8 @@ export function Footer() {
         <span>
           © {new Date().getFullYear()} <span className="font-medium text-foreground">Areeb Khan</span>. All rights reserved.
         </span>
-                {/* Developer Credit & WhatsApp Button */}
+        
+        {/* Developer Credit & WhatsApp Button */}
         <div className="mt-4 flex flex-col sm:flex-row items-center gap-4 border-t border-gold/10 pt-8 w-full justify-center">
           <p className="text-cream/20 text-sm font-medium tracking-wide">
             Website Designed & Developed by Areeb Khan
@@ -28,9 +29,11 @@ export function Footer() {
             Chat with Areeb
           </a>
         </div>
+        
+        <div className="mt-4 sm:mt-0 flex items-center gap-1">
           {" · "}
           <span className="italic">All content, design &amp; code are proprietary and may not be copied or reused.</span>
-        </span>
+        </div>
       </div>
     </footer>
   );
